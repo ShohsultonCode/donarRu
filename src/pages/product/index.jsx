@@ -13,7 +13,7 @@ const Index = () => {
   const navigate = useNavigate();
 
   const telegram = window.Telegram.WebApp;
-  
+
   useEffect(() => {
     const fetchSelectedProducts = async () => {
       try {
@@ -62,20 +62,24 @@ const Index = () => {
 
   const handlePay = async () => {
     try {
-      const orderData = products.map((product) => ({
-        name: product.product_name,
-        quantity: productCounts[product._id] || 1
-      }));
-  
+      const orderData = products.reduce((acc, product) => {
+        const productIdKey = `product_${product.product_name}`;
+        acc[productIdKey] = {
+          name: product.product_name,
+          quantity: productCounts[product._id] || 1
+        };
+        return acc;
+      }, {});
+
       // Prepare data for the second API
       const secondApiData = {
         ok: true,
         order: {
           user_id: telegramUserId,
-          items: orderData
+          ...orderData
         }
       };
-  
+
       const secondResponse = await fetch('https://vermino.uz/bots/orders/CatDeliver/index.php', {
         method: 'POST',
         headers: {
@@ -83,11 +87,11 @@ const Index = () => {
         },
         body: JSON.stringify(secondApiData)
       });
-  
+
       if (secondResponse.ok) {
         localStorage.removeItem('selectedProducts');
         toast.success('Вы успешно разместили свой заказ!');
-  
+
         setTimeout(() => {
           navigate("/");
           telegram.close();
@@ -100,8 +104,6 @@ const Index = () => {
       toast.error('Во время выполнения заказа произошла ошибка');
     }
   };
-  
-  
 
   const handleBack = () => {
     localStorage.removeItem('selectedProducts');
