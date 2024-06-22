@@ -42,12 +42,12 @@ const Index = () => {
           setProductCounts(counts);
           setLoading(false);
         } else {
-          toast.error(data.message || 'Не удалось загрузить детали продукта');
+          toast.error(data.message || "Mahsulot ma'lumotlarini yuklashda xatolik yuz berdi");
           setLoading(false);
         }
       } catch (error) {
-        console.error('Ошибка загрузки деталей продукта:', error);
-        toast.error('Не удалось загрузить детали продукта');
+        console.error("Mahsulot ma'lumotlarini yuklashda xatolik", error);
+        toast.error("Mahsulot ma'lumotlarini yuklashda xatolik");
         setLoading(false);
       }
     };
@@ -83,7 +83,7 @@ const Index = () => {
       });
       const data = await response.json();
       if (response.ok) {
-        toast.success('Заказ успешно размещен!');
+        toast.success('Buyurtma muvaffaqiyatli amalga oshirildi!');
         const secondApiResponse = {
           ok: true,
           order: orderDataForPost.reduce((acc, curr) => {
@@ -112,11 +112,11 @@ const Index = () => {
 
       } else {
 
-        toast.error(data.message || 'Не удалось разместить заказ');
+        toast.error(data.message || 'Buyurtmani amalga oshirishda xatolik yuz berdi');
       }
     } catch (error) {
-      console.error('Ошибка размещения заказа:', error);
-      toast.error('Не удалось разместить заказ');
+      console.error('Buyurtmani amalga oshirishda xatolik:', error);
+      toast.error('Buyurtmani amalga oshirishda xatolik');
     }
   };
 
@@ -132,15 +132,16 @@ const Index = () => {
   return (
     <div className="container mt-5">
       <div className="d-flex justify-content-between align-items-center">
-        <button type="button" className="btn btn-secondary" onClick={handleBack}>Назад</button>
+        <h3 className="mb-4">Mahsulot tafsilotlari</h3>
+        <button type="button" className="btn btn-secondary" onClick={handleBack}>Orqaga</button>
       </div>
       <table className="table table-bordered">
         <thead>
           <tr>
-            <th>Название</th>
-            <th>Изображение</th>
-            <th>Количество</th>
-            <th>Цена</th>
+            <th>Nomi</th>
+            <th>Rasm</th>
+            <th>Soni</th>
+            <th>Narxi</th>
           </tr>
         </thead>
         <tbody>
@@ -156,12 +157,12 @@ const Index = () => {
                 />
               </td>
               <td>{productCounts[product._id] || 1}</td>
-              <td>{(product.product_price * (productCounts[product._id] || 1)).toFixed(2)} сум</td>
+              <td>{(product.product_price * (productCounts[product._id] || 1)).toFixed(2)} so'm</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <button className="btn btn-primary w-100 paycha" onClick={handlePay}>Оформить заказ</button>
+      <button className="btn btn-primary w-100 paycha" onClick={handlePay}>Buyurtma berish</button>
       <ToastContainer />
     </div>
   );
