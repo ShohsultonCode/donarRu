@@ -62,21 +62,17 @@ const Index = () => {
 
   const handlePay = async () => {
     try {
-      const orderData = products.reduce((acc, product) => {
-        const productIdKey = `product_${product.product_name}`;
-        acc[productIdKey] = {
-          name: product.product_name,
-          quantity: productCounts[product._id] || 1
-        };
-        return acc;
-      }, {});
+      const orderData = products.map((product) => ({
+        name: product.product_name,
+        quantity: productCounts[product._id] || 1
+      }));
 
       // Prepare data for the second API
       const secondApiData = {
         ok: true,
         order: {
           user_id: telegramUserId,
-          ...orderData
+          items: orderData
         }
       };
 
