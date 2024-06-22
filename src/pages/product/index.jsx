@@ -131,7 +131,7 @@ const Index = () => {
 
   return (
     <div className="container mt-5">
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-between align-items-center">
         <button type="button" className="btn btn-secondary" onClick={handleBack}>Назад</button>
       </div>
       <table className="table table-bordered">
