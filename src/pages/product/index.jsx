@@ -63,46 +63,44 @@ const Index = () => {
   const handlePay = async () => {
     try {
       const orderData = products.map((product) => ({
-        product_id: product._id,
         name: product.product_name,
         quantity: productCounts[product._id] || 1
       }));
   
-  
-  
-        // Prepare data for the second API
-        const secondApiData = {
-          ok: true,
-          order: {
-            user_id: telegramUserId,
-            items: orderData
-          }
-        };
-  
-        const secondResponse = await fetch('https://vermino.uz/bots/orders/CatDeliver/index.php', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(secondApiData)
-        });
-  
-        if (secondResponse.ok) {
-          localStorage.removeItem('selectedProducts');
-          toast.success('Вы успешно разместили свой заказ!');
-
-          setTimeout(() => {
-            navigate("/");
-            telegram.close();
-          }, 700);
-        } else {
-          toast.error('Произошла ошибка при выполнении второго заказа');
+      // Prepare data for the second API
+      const secondApiData = {
+        ok: true,
+        order: {
+          user_id: telegramUserId,
+          items: orderData
         }
+      };
+  
+      const secondResponse = await fetch('https://vermino.uz/bots/orders/CatDeliver/index.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(secondApiData)
+      });
+  
+      if (secondResponse.ok) {
+        localStorage.removeItem('selectedProducts');
+        toast.success('Вы успешно разместили свой заказ!');
+  
+        setTimeout(() => {
+          navigate("/");
+          telegram.close();
+        }, 700);
+      } else {
+        toast.error('Произошла ошибка при выполнении второго заказа');
+      }
     } catch (error) {
       console.error('Buyurtmani amalga oshirishda xatolik:', error);
       toast.error('Во время выполнения заказа произошла ошибка');
     }
   };
+  
   
 
   const handleBack = () => {
