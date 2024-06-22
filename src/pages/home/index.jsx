@@ -108,7 +108,7 @@ const Index = () => {
 
     return (
         <div className="container mt-5">
-            {userId && <p>Идентификатор пользователя: {userId}</p>}
+            {userId && <p>пользователя: {userId}</p>}
             {loading ? (
                 <Loader />
             ) : (
