@@ -81,17 +81,20 @@ const Index = () => {
         headers: {
           'Content-Type': 'application/json',
         },
+
+        
         body: JSON.stringify(secondApiData)
       });
+      console.log(secondApiData);
 
       if (secondResponse.ok) {
         localStorage.removeItem('selectedProducts');
         toast.success('Вы успешно разместили свой заказ!');
 
-        setTimeout(() => {
-          navigate("/");
-          telegram.close();
-        }, 700);
+        // setTimeout(() => {
+        //   navigate("/");
+        //   telegram.close();
+        // }, 700);
       } else {
         toast.error('Произошла ошибка при выполнении второго заказа');
       }
