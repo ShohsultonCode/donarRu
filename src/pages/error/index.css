@@ -1,0 +1,57 @@
+.all {
+    animation: moveAround 10s linear infinite;
+    /* Adjust the duration and timing function as needed */
+    cursor: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    background: black;
+}
+
+@keyframes moveAround {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(20px, 20px);
+        /* Adjust the distance and direction */
+    }
+
+    50% {
+        transform: translate(0, 0);
+    }
+
+    75% {
+        transform: translate(-20px, -20px);
+        /* Adjust the distance and direction */
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* Rest of your CSS */
+
+.titles {
+    position: relative;
+    display: inline-block;
+    font-weight: 500;
+    color: white;
+    font-size: 5rem;
+    -webkit-text-fill-color: black;
+    -webkit-text-stroke: 1px;
+}
+
+.titles::after {
+    position: absolute;
+    content: attr(data-text);
+    -webkit-text-fill-color: #fff;
+    -webkit-text-stroke: 0;
+    left: 0;
+    top: 0;
+    clip-path: circle(4rem at var(--x, -100%) var(--y, -100%));
+}
+
