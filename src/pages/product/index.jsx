@@ -135,24 +135,33 @@ const Index = () => {
         <h3 className="mb-4">Детали продукта</h3>
         <button type="button" className="btn btn-secondary" onClick={handleBack}>Назад</button>
       </div>
-      <div className="row">
-        {products.map((product, index) => (
-          <div className="col-md-4 mb-4" key={index}>
-            <div className="product-card">
-              <img
-                src={`https://botproject.uz/api/images/${product.product_image}`}
-                className="product-image"
-                alt={product.product_name}
-              />
-              <div className="p-3">
-                <h5 className="mb-3">{product.product_name}</h5>
-                <p>Количество: {productCounts[product._id] || 1}</p>
-                <p>Цена: {(product.product_price * (productCounts[product._id] || 1)).toFixed(2)} сум</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+      <table className="table table-bordered">
+        <thead>
+          <tr>
+            <th>Название</th>
+            <th>Изображение</th>
+            <th>Количество</th>
+            <th>Цена</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((product, index) => (
+            <tr key={index}>
+              <td>{product.product_name}</td>
+              <td>
+                <img
+                  src={`https://botproject.uz/api/images/${product.product_image}`}
+                  className="img-fluid"
+                  alt={product.product_name}
+                  style={{ height: "100px", width: "100px", objectFit: "cover" }}
+                />
+              </td>
+              <td>{productCounts[product._id] || 1}</td>
+              <td>{(product.product_price * (productCounts[product._id] || 1)).toFixed(2)} сум</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       <button className="btn btn-primary w-100 paycha" onClick={handlePay}>Оформить заказ</button>
       <ToastContainer />
     </div>
