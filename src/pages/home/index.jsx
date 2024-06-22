@@ -108,7 +108,7 @@ const Index = () => {
 
     return (
         <div className="container mt-5">
-            {userId && <p>пользователя: {userId}</p>}
+            {userId && <p>Идентификатор пользователя: {userId}</p>}
             {loading ? (
                 <Loader />
             ) : (
@@ -122,7 +122,6 @@ const Index = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">{product.product_name}</h5>
                                     <h6 className="card-subtitle mb-2 text-muted">Категория: {product.product_category.category_name}</h6>
-                                    <p className="card-text">{product.product_price.toFixed(2)} сум</p>
                                     {productCounts[product._id] ? (
                                         <div>
                                             <button className="btn btn-danger me-2" onClick={() => handleDecrement(product._id)}>-</button>
