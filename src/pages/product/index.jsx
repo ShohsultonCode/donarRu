@@ -83,7 +83,7 @@ const Index = () => {
       });
       const data = await response.json();
       if (response.ok) {
-        toast.success('Buyurtma muvaffaqiyatli amalga oshirildi!');
+        toast.success('Заказ выполнен!');
         const secondApiResponse = {
           ok: true,
           order: orderDataForPost.reduce((acc, curr) => {
@@ -112,11 +112,11 @@ const Index = () => {
 
       } else {
 
-        toast.error(data.message || 'Buyurtmani amalga oshirishda xatolik yuz berdi');
+        toast.error(data.message || 'Произошла ошибка при обработке заказа');
       }
     } catch (error) {
       console.error('Buyurtmani amalga oshirishda xatolik:', error);
-      toast.error('Buyurtmani amalga oshirishda xatolik');
+      toast.error('Во время выполнения заказа произошла ошибка');
     }
   };
 
@@ -132,16 +132,16 @@ const Index = () => {
   return (
     <div className="container mt-5">
       <div className="d-flex justify-content-between align-items-center">
-        <h3 className="mb-4">Mahsulot tafsilotlari</h3>
-        <button type="button" className="btn btn-secondary" onClick={handleBack}>Orqaga</button>
+        <h3 className="mb-4">Подробности</h3>
+        <button type="button" className="btn btn-secondary" onClick={handleBack}>Назад</button>
       </div>
       <table className="table table-bordered">
         <thead>
           <tr>
-            <th>Nomi</th>
-            <th>Rasm</th>
-            <th>Soni</th>
-            <th>Narxi</th>
+            <th>Имя</th>
+            <th>Картина</th>
+            <th>Число</th>
+            <th>Расходы</th>
           </tr>
         </thead>
         <tbody>
@@ -157,12 +157,12 @@ const Index = () => {
                 />
               </td>
               <td>{productCounts[product._id] || 1}</td>
-              <td>{(product.product_price * (productCounts[product._id] || 1)).toFixed(2)} so'm</td>
+              <td>{(product.product_price * (productCounts[product._id] || 1)).toFixed(2)} сум</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <button className="btn btn-primary w-100 paycha" onClick={handlePay}>Buyurtma berish</button>
+      <button className="btn btn-primary w-100 paycha" onClick={handlePay}>Разместить заказ</button>
       <ToastContainer />
     </div>
   );
