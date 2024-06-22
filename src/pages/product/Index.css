@@ -17,3 +17,91 @@
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
+
+/* Index.css */
+
+.container {
+  max-width: 100%;
+  padding: 2rem;
+  text-align: center;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: #fff;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table-bordered {
+  border: 1px solid #dee2e6;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #dee2e6;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.paycha {
+  margin-top: 1rem;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .table {
+    font-size: 0.9rem;
+  }
+
+  .paycha {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+
+  .d-flex {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-secondary {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .table {
+    font-size: 0.8rem;
+  }
+
+  .paycha {
+    font-size: 0.9rem;
+    padding: 0.4rem;
+  }
+
+  .btn-secondary {
+    margin-top: 1rem;
+  }
+}
