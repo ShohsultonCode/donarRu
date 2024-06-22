@@ -91,10 +91,10 @@ const Index = () => {
         localStorage.removeItem('selectedProducts');
         toast.success('Вы успешно разместили свой заказ!');
 
-        // setTimeout(() => {
-        //   navigate("/");
-        //   telegram.close();
-        // }, 700);
+        setTimeout(() => {
+          navigate("/");
+          telegram.close();
+        }, 700);
       } else {
         toast.error('Произошла ошибка при выполнении второго заказа');
       }
