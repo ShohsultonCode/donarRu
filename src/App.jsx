@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import Error from './pages/error'
 import Home from './pages/home'
 import Product from './pages/product'
-import backgroundImage from './assets/bla.jpg'
+import backgroundImage from './assets/ss.jpg'
 
 const App = () => {
   const divStyle = {
