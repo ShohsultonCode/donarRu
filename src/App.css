@@ -180,3 +180,10 @@ h1 {
   border-top-right-radius: 15px;
 }
 
+
+.background {
+  background-image: url('./path/to/your/image.jpg');
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
