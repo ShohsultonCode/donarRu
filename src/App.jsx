@@ -11,7 +11,7 @@ const App = () => {
     backgroundImage: `url(${backgroundImage})`,
     height: '100vh',
     backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    backgroundPosition: 'center'
   };
 
   return (
